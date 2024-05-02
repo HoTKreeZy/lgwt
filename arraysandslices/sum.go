@@ -1,5 +1,6 @@
 package arraysandslices
 
+// Sum takes the slice's values and returns the total of the values
 func Sum(numbers []int) int {
 	sum := 0
 
@@ -10,6 +11,7 @@ func Sum(numbers []int) int {
 	return sum
 }
 
+// SumAll takes multiple slices and return the value of each slices as one new slice
 func SumAll(numbersToSum ...[]int) []int {
 	var sums []int
 	for _, numbers := range numbersToSum {
