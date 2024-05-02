@@ -2,15 +2,33 @@ package pae
 
 import "testing"
 
-func TestWaller(t *testing.T) {
+func TestWallet(t *testing.T) {
 
-	wallet := Wallet{}
-	wallet.Deposite(Bitcoin(10))
+	t.Run("deposit", func(t *testing.T) {
+		wallet := Wallet{}
 
-	got := wallet.Balance()
-	want := Bitcoin(10)
+		wallet.Deposit(Bitcoin(10))
 
-	if got != want {
-		t.Errorf("got %s want %s", got, want)
-	}
+		got := wallet.Balance()
+
+		want := Bitcoin(10)
+
+		if got != want {
+			t.Errorf("got %s want %s", got, want)
+		}
+	})
+
+	t.Run("withdraw", func(t *testing.T) {
+		wallet := Wallet{balance: Bitcoin(20)}
+
+		wallet.Withdraw(Bitcoin(10))
+
+		got := wallet.Balance()
+
+		want := Bitcoin(10)
+
+		if got != want {
+			t.Errorf("got %s want %s", got, want)
+		}
+	})
 }
