@@ -1,7 +1,6 @@
 package arraysandslices
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -35,7 +34,19 @@ func TestSumAll(t *testing.T) {
 	got := SumAll([]int{1, 2}, []int{0, 9})
 	want := []int{3, 9}
 
-	if !reflect.DeepEqual(got, want) {
+	if !SlicesEqual(got, want) {
 		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+func TestSlicesEqual(t *testing.T) {
+	input := []int{3, 9, 5}
+	expected := []int{3, 9, 5}
+
+	got := SlicesEqual(input, expected)
+	want := true
+
+	if got != want {
+		t.Errorf("got %t but want %t given %v wanted %v", got, want, input, expected)
 	}
 }

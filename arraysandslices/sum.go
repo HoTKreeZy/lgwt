@@ -17,3 +17,17 @@ func SumAll(numbersToSum ...[]int) []int {
 	}
 	return sums
 }
+
+// SlicesEqual compares the values of each slices
+// and returns 'false' if one of the values are not equal
+func SlicesEqual(got, want []int) bool {
+	if len(got) != len(want) {
+		return false
+	}
+	for key := range got {
+		if got[key] != want[key] {
+			return false
+		}
+	}
+	return true
+}
